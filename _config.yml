@@ -8,7 +8,7 @@ excerpt_separator: <!--more-->
 
 minima:
   social_links:
-    github:  Aetopia
+    github: Aetopia
     rss: rss
 
 theme: minima
