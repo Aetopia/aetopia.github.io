@@ -1,0 +1,23 @@
+theme: minima
+  
+title: Task Managing
+author: Aetopia
+description: Random things, I find interesting in Windows development.
+show_excerpts: true
+excerpt_separator: <!--more-->
+
+minima:
+  social_links:
+    github:  Aetopia
+    rss: rss
+
+theme: minima
+
+plugins:
+ - jekyll-feed
+ - jekyll-seo-tag
+
+github_username: Aetopia
+rss: rss
+
+
