@@ -41,7 +41,7 @@ This API has a [chance of returning invalid information](https://stackoverflow.c
 
 ## AppDiagnosticInfo
 
-Back in 2017, Microsoft introduced "UWP App Diagnostics" into the Windows Runtime & one of the classes, they introduced was [`AppDiagnosticInfo`](https://learn.microsoft.com/mt-mt/uwp/api/windows.system.appdiagnosticinfo) which provides metadata about an app within a package.
+Back in 2017, Microsoft introduced ["UWP App Diagnostics"](https://blogs.windows.com/windowsdeveloper/2017/06/28/uwp-app-diagnostics/) into the Windows Runtime & one of the classes, they introduced was [`AppDiagnosticInfo`](https://learn.microsoft.com/mt-mt/uwp/api/windows.system.appdiagnosticinfo) which provides metadata about an app within a package.
 
 `AppDiagnosticInfo` can be used to:
 
