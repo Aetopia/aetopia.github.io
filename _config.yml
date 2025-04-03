@@ -3,12 +3,13 @@ theme: minima
 title: Task Managing
 author: Aetopia
 description: Random things, I find interesting in Windows development.
+markdown: GFM
 show_excerpts: true
 excerpt_separator: <!--more-->
 
 minima:
   social_links:
-    github: Aetopia
+    github:  Aetopia
     rss: rss
 
 theme: minima
