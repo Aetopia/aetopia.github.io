@@ -81,3 +81,18 @@ Thus, we can determine if there is a running instance using:
 AppDiagnosticInfo.GetResourceGroups().Any(_ => _.GetProcessDiagnosticInfos().Any())
 ```
 
+There are multiple ways to check if a packaged app is running:
+
+- Process enumeration is straightforward. 
+
+- `IPackageDebugSettings` is simple.
+
+- `AppDiagnosticInfo` is the most reliable.
+
+For the best balance of accuracy and ease, use:
+
+```csharp
+AppDiagnosticInfo.GetResourceGroups().Any(_ => _.GetProcessDiagnosticInfos().Any())
+```
+
+This method is straightforward, simple, and reliable.
