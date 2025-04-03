@@ -81,6 +81,8 @@ Thus, we can determine if there is a running instance using:
 AppDiagnosticInfo.GetResourceGroups().Any(_ => _.GetProcessDiagnosticInfos().Any())
 ```
 
+## Conclusion
+
 There are multiple ways to check if a packaged app is running:
 
 - Process enumeration is straightforward. 
