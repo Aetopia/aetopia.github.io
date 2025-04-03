@@ -24,7 +24,7 @@ I could have just used this, its reliable & battle tested.
 
 ## IPackageDebugSettings
 
-[`IPackageDebugSettings::GetPackageExecutionState`](https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nf-shobjidl_core-ipackagedebugsettings-getpackageexecutionstate) can be to query a package's execution state.
+[`IPackageDebugSettings::GetPackageExecutionState`](https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nf-shobjidl_core-ipackagedebugsettings-getpackageexecutionstate) can be used to query a package's execution state.
 
 It's usage is also straight forward:
 
