@@ -22,9 +22,9 @@ I could have just used this, its reliable & battle tested.
 > - This approach requires us to know about the target process beforehand.
 > - Packaged apps are subject to internal changes, thus not fully persistent.
 
-## IPackageDebugSettings::GetPackageExecutionState()
+## IPackageDebugSettings
 
-`IPackageDebugSettings::GetPackageExecutionState` can be to query a package's execution state.
+[`IPackageDebugSettings::GetPackageExecutionState`](https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nf-shobjidl_core-ipackagedebugsettings-getpackageexecutionstate) can be to query a package's execution state.
 
 It's usage is also straight forward:
 
@@ -32,5 +32,49 @@ It's usage is also straight forward:
 IPackageDebugSettings::GetPackageExecutionState([In] <Package Full Name>, [Out] <Package Execution State>)
 ```
 
-This is actually the simplest way to determine if a packaged app is running but its cracks start to show when you put a package into debug mode using `IPackageDebugSettings::EnableDebugging` without a debugger specified.
+Making this the simplest way to determine if a packaged app is running!
 
+> This API returns the execution state of an entire package & not for an instance of it.
+
+All is good with this API until you enable debug mode for a package using `IPackageDebugSettings::EnableDebugging`.
+This API has a [chance of returning invalid information](https://stackoverflow.com/questions/75951964/how-to-determine-if-uwp-app-is-running-with-windows-open) about a package's execution state when debug mode is enabled.
+
+## AppDiagnosticInfo
+
+Back in 2017, Microsoft introduced "UWP App Diagnostics" into the Windows Runtime & one of the classes, they introduced was [`AppDiagnosticInfo`](https://learn.microsoft.com/mt-mt/uwp/api/windows.system.appdiagnosticinfo) which provides metadata about an app within a package.
+
+`AppDiagnosticInfo` can be used to:
+
+- Query all or specific apps running on a system.
+
+- Query apps provided by a package family.
+
+- Query metadata about an app belonging to a package family. 
+
+We can easily enumerate instances of an app using:
+
+```csharp
+AppDiagnosticInfo.GetResourceGroups()
+```
+
+This returns a list of `AppResourceGroupInfo` objects which represent an instance of an app running on the system.
+
+If we just want to determine if there is a running instance then:
+
+```csharp
+AppDiagnosticInfo.GetResourceGroups().Any()
+```
+
+Once again all is good until we have debug mode enabled for a package.
+
+Now `AppDiagnosticInfo.GetResourceGroups()` has a chance of containing [invalid `AppResourceGroupInfo` objects.](https://stackoverflow.com/questions/68082731/startterminateasync-throws-type-e-elementnotfound)
+
+So we can't simply use `AppDiagnosticInfo.GetResourceGroups().Any()` to determine if a running instance exists, thus we require some way to determine if an `AppResourceGroupInfo` object is valid.
+
+An `AppResourceGroupInfo` object may deemed invalid if `AppResourceGroupInfo.GetProcessDiagnosticInfos()` contains nothing, how can an app be running if there are no process associated with it?
+
+Thus, we can determine if there is a running instance using:
+
+```csharp
+AppDiagnosticInfo.GetResourceGroups().Any(_ => _.GetProcessDiagnosticInfos().Any())
+```
