@@ -22,7 +22,7 @@ I could have just used this, its reliable & battle tested.
 > - This approach requires us to know about the target process beforehand.
 > - Packaged apps are subject to internal changes, thus not fully persistent.
 
-## [`IPackageDebugSettings::GetPackageExecutionState()`](https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nf-shobjidl_core-ipackagedebugsettings-getpackageexecutionstate)
+## IPackageDebugSettings::GetPackageExecutionState()
 
 `IPackageDebugSettings::GetPackageExecutionState` can be to query a package's execution state.
 
