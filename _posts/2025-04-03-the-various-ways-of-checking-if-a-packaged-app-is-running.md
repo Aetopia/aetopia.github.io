@@ -26,7 +26,7 @@ I could have just used this, it's reliable & battle tested.
 
 [`IPackageDebugSettings::GetPackageExecutionState`](https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nf-shobjidl_core-ipackagedebugsettings-getpackageexecutionstate) can be used to query a package's execution state.
 
-Usage of this API is straight forward making this the simplest way to determine if a packaged app is running!
+Usage of this API is straight forward, making this the simplest way to determine if a packaged app is running!
 > This API returns the execution state of an entire package & not for an instance of it.
 
 All is good with this API until you enable debug mode for a package using `IPackageDebugSettings::EnableDebugging`.
