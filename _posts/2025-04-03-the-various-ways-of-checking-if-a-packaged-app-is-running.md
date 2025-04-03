@@ -28,8 +28,8 @@ I could have just used this, its reliable & battle tested.
 
 It's usage is also straight forward:
 
-```cpp
-IPackageDebugSettings::GetPackageExecutionState([In] <Package Full Name>, [Out] <Package Execution State>)
+```csharp
+IPackageDebugSettings.GetPackageExecutionState([In] <Package Full Name>, [Out] <Package Execution State>)
 ```
 
 Making this the simplest way to determine if a packaged app is running!
