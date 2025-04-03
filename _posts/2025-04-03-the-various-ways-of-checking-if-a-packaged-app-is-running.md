@@ -17,7 +17,7 @@ The most straight forward way to verify if a process is running:
 
 - Verify if the target process is running.
 
-I could have just used this, its reliable & battle tested.
+I could have just used this, it's reliable & battle tested.
 
 > - This approach requires us to know about the target process beforehand.
 > - Packaged apps are subject to internal changes, thus not fully persistent.
@@ -26,14 +26,7 @@ I could have just used this, its reliable & battle tested.
 
 [`IPackageDebugSettings::GetPackageExecutionState`](https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nf-shobjidl_core-ipackagedebugsettings-getpackageexecutionstate) can be used to query a package's execution state.
 
-It's usage is also straight forward:
-
-```csharp
-IPackageDebugSettings.GetPackageExecutionState([In] <Package Full Name>, [Out] <Package Execution State>)
-```
-
-Making this the simplest way to determine if a packaged app is running!
-
+Usage of this API is straight forward making this the simplest way to determine if a packaged app is running!
 > This API returns the execution state of an entire package & not for an instance of it.
 
 All is good with this API until you enable debug mode for a package using `IPackageDebugSettings::EnableDebugging`.
