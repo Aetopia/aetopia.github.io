@@ -19,7 +19,6 @@ The most straight forward way to verify if a process is running:
 
 I could have just used this, its reliable & battle tested.
 
-> [!NOTE]
 > - This approach requires us to know about the target process beforehand.
 > - Packaged apps are subject to internal changes, thus not fully persistent.
 
