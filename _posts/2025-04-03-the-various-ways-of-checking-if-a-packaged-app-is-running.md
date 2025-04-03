@@ -9,7 +9,7 @@ The answer to this might be simple but it isn't.
 
 <!--more-->
 
-The most straight forward way to verify if a process is running or not is to:
+The most straight forward way to verify if a process is running:
 
 - Enumerate a list of running processes.
 
@@ -18,3 +18,20 @@ The most straight forward way to verify if a process is running or not is to:
 - Verify if the target process is running.
 
 I could have just used this, its reliable & battle tested.
+
+> [!NOTE]
+> - This approach requires us to know about the target process beforehand.
+> - Packaged apps are subject to internal changes, thus not fully persistent.
+
+## [`IPackageDebugSettings::GetPackageExecutionState()`](https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nf-shobjidl_core-ipackagedebugsettings-getpackageexecutionstate)
+
+`IPackageDebugSettings::GetPackageExecutionState` can be to query a package's execution state.
+
+It's usage is also straight forward:
+
+```cpp
+IPackageDebugSettings::GetPackageExecutionState([In] <Package Full Name>, [Out] <Package Execution State>)
+```
+
+This is actually the simplest way to determine if a packaged app is running but its cracks start to show when you put a package into debug mode using `IPackageDebugSettings::EnableDebugging` without a debugger specified.
+
