@@ -73,7 +73,7 @@ So we can't simply use `AppDiagnosticInfo.GetResourceGroups().Any()` to determin
 
 An `AppResourceGroupInfo` object may deemed invalid if `AppResourceGroupInfo.GetProcessDiagnosticInfos()` contains nothing.
 
-How can an app be running if there are no process associated with it?
+How can an app be running if there are no processes associated with it?
 
 Thus, we can determine if there is a running instance using:
 
