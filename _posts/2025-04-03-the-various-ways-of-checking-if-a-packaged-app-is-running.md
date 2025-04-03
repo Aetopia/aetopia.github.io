@@ -71,10 +71,13 @@ Now `AppDiagnosticInfo.GetResourceGroups()` has a chance of containing [invalid 
 
 So we can't simply use `AppDiagnosticInfo.GetResourceGroups().Any()` to determine if a running instance exists, thus we require some way to determine if an `AppResourceGroupInfo` object is valid.
 
-An `AppResourceGroupInfo` object may deemed invalid if `AppResourceGroupInfo.GetProcessDiagnosticInfos()` contains nothing, how can an app be running if there are no process associated with it?
+An `AppResourceGroupInfo` object may deemed invalid if `AppResourceGroupInfo.GetProcessDiagnosticInfos()` contains nothing.
+
+How can an app be running if there are no process associated with it?
 
 Thus, we can determine if there is a running instance using:
 
 ```csharp
 AppDiagnosticInfo.GetResourceGroups().Any(_ => _.GetProcessDiagnosticInfos().Any())
 ```
+
