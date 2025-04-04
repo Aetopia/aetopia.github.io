@@ -55,14 +55,14 @@ This returns a list of `AppResourceGroupInfo` objects which represent an instanc
 If we just want to determine if there is a running instance then:
 
 ```csharp
-AppDiagnosticInfo.GetResourceGroups().Any()
+AppDiagnosticInfo.GetResourceGroups().Count != default
 ```
 
 Once again all is good until we have debug mode enabled for a package.
 
 Now `AppDiagnosticInfo.GetResourceGroups()` has a chance of containing [invalid `AppResourceGroupInfo` objects.](https://stackoverflow.com/questions/68082731/startterminateasync-throws-type-e-elementnotfound)
 
-So we can't simply use `AppDiagnosticInfo.GetResourceGroups().Any()` to determine if a running instance exists, thus we require some way to determine if an `AppResourceGroupInfo` object is valid.
+So we can't simply use `AppDiagnosticInfo.GetResourceGroups().Count != default` to determine if a running instance exists, thus we require some way to determine if an `AppResourceGroupInfo` object is valid.
 
 An `AppResourceGroupInfo` object may deemed invalid if `AppResourceGroupInfo.GetProcessDiagnosticInfos()` contains nothing.
 
@@ -71,7 +71,7 @@ How can an app be running if there are no processes associated with it?
 Thus, we can determine if there is a running instance using:
 
 ```csharp
-AppDiagnosticInfo.GetResourceGroups().Any(_ => _.GetProcessDiagnosticInfos().Any())
+AppDiagnosticInfo.GetResourceGroups().Any(_ => _.GetProcessDiagnosticInfos().Count != default)
 ```
 
 ## Conclusion
@@ -87,7 +87,7 @@ There are multiple ways to check if a packaged app is running:
 For the best balance of accuracy and ease, use:
 
 ```csharp
-AppDiagnosticInfo.GetResourceGroups().Any(_ => _.GetProcessDiagnosticInfos().Any())
+AppDiagnosticInfo.GetResourceGroups().Any(_ => _.GetProcessDiagnosticInfos().Count != default)
 ```
 
 This method is straightforward, simple, and reliable.
