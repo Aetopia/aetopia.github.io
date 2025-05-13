@@ -16,10 +16,8 @@ theme: minima
 plugins:
  - jekyll-feed
  - jekyll-seo-tag
- - jekyll-archives
-
-jekyll-archives:
-  - enabled: all 
 
 github_username: Aetopia
 rss: rss
+
+
