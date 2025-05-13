@@ -2,6 +2,7 @@ theme: minima
   
 author: Aetopia
 description: Random things, I find interesting in software development.
+markdown: GFM
 show_excerpts: true
 excerpt_separator: <!--more-->
 
@@ -12,15 +13,11 @@ minima:
 
 theme: minima
 
-header_pages:
-  - _pages/archive.md
-
-include:
-    - _pages
-
 plugins:
  - jekyll-feed
  - jekyll-seo-tag
 
 github_username: Aetopia
 rss: rss
+
+
